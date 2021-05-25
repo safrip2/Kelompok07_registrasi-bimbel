@@ -42,12 +42,27 @@ c. 9 √3 + 8 √6
 d. 3 √8 + 9 √6 
 e. 6 √3 + 9 √8"""
 
+q7 = """7. Jika x+y = 100 dan x/y = 1/9, maka y-x =
+a. 20
+b. 30
+c. 50
+d. 60
+e. 80"""
+
+q8 = """8. Jika 5p/q = 5 maka q/(5p-q) =
+a. 12,5%
+b. 16,7%
+c. 25%
+d. 33%
+e. 40%"""
 
 
 
 
 
-questions = {q1: "c", q2: "c", q3: "", q4: "e", q5: "d", q6: "a", q7: "", q8: "", q9: "", q10: ""}
+
+
+questions = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "", q10: ""}
 score = 0
 for soal in questions:
     print(soal)
