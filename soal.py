@@ -1,6 +1,6 @@
 global score
 
-q1 = """1. terdapat enam orang anak yang terdiri dari 3 laki lai dan 3 perempuan sedang duduk berjajar bersama, peluang 3 anak perempuan duduk berdampingan adalah...
+q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki lai dan 3 perempuan sedang duduk berjajar bersama, peluang 3 anak perempuan duduk berdampingan adalah...
 a. 1/60 
 b. 1/30
 c. 1/15
@@ -56,13 +56,24 @@ c. 25%
 d. 33%
 e. 40%"""
 
+q9 = """9. Hitung panjang diagonal ruang dari sebuah kubus dengan panjang  rusuk 7 cm =
+a. 7√3 cm
+b. 6√3 cm
+c. 3√3 cm
+d. 9√3 cm
+e. 12√3 cm"""
+
+q10 = """10.  Perbandingan uang saku riri dan rara adalah 3 : 2, jika uang riri dan uang rara berjumlah Rp150.000,00. Berapakah masing-masing uang riri dan rara?
+a. Rp80.000,00 dan Rp60.000,00
+b. Rp90.000,00 dan Rp60.000,00
+c. Rp90.000,00 dan Rp70.000,00
+d. Rp100.000,00 dan Rp80.000,00
+e. Rp100.000,00 dan Rp90.000,00"""
 
 
 
 
-
-
-questions = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "", q10: ""}
+questions = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "a", q10: "b"}
 score = 0
 for soal in questions:
     print(soal)
