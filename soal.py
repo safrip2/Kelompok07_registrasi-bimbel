@@ -15,3 +15,5 @@ global score
             score += 0
 
     return score
+
+    kesjnfkjlansklf
