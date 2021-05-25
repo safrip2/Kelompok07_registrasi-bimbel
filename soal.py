@@ -22,7 +22,7 @@ d. -7 - 4√3
 e. -7 + 2√3"""
 
 
-questions = {q1: "c", q2: "b", q3: "c", q4: "", q6: "", q7: "", q8: "", q9: "", q10: ""}
+questions = {q1: "c", q2: "", q3: "", q4: "", q6: "", q7: "", q8: "", q9: "", q10: ""}
 score = 0
 for soal in questions:
     print(soal)
