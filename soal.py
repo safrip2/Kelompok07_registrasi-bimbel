@@ -1,6 +1,13 @@
 global score
-
-q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki lai dan 3 perempuan sedang duduk berjajar bersama, peluang 3 anak perempuan duduk berdampingan adalah...
+import time
+score = 0
+print("""untuk menjawab ketik a, b, c, d, atau e lalu tekan enter
+anda hanya diberi waktu 10 menit untuk menjawab soal""")
+time.sleep(10)
+waktu = 5
+start_time = time.time()
+q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki laki dan 3 perempuan sedang duduk berjajar bersama, 
+peluang 3 anak perempuan duduk berdampingan adalah...
 a. 1/60 
 b. 1/30
 c. 1/15
@@ -21,7 +28,8 @@ c. 7 - 4√3
 d. -7 - 4√3
 e. -7 + 2√3"""
 
-q4 = """4. Untuk mengerjakan 1 unit rumah dibutuhkan waktu 36 hari dengan 12 tenaga kerja. Berapa waktu akan dihabiskan bila menggunakan 24 orang tenaga kerja?
+q4 = """4. Untuk mengerjakan 1 unit rumah dibutuhkan waktu 36 hari dengan 12 tenaga kerja. 
+Berapa waktu akan dihabiskan bila menggunakan 24 orang tenaga kerja?
 a. 14 Hari 
 b. 15 Hari 
 c. 16 Hari 
@@ -63,25 +71,25 @@ c. 3√3 cm
 d. 9√3 cm
 e. 12√3 cm"""
 
-q10 = """10.  Perbandingan uang saku riri dan rara adalah 3 : 2, jika uang riri dan uang rara berjumlah Rp150.000,00. Berapakah masing-masing uang riri dan rara?
+q10 = """10.  Perbandingan uang saku riri dan rara adalah 3 : 2, jika uang riri dan uang rara berjumlah Rp150.000,00. 
+Berapakah masing-masing uang riri dan rara?
 a. Rp80.000,00 dan Rp60.000,00
 b. Rp90.000,00 dan Rp60.000,00
 c. Rp90.000,00 dan Rp70.000,00
 d. Rp100.000,00 dan Rp80.000,00
 e. Rp100.000,00 dan Rp90.000,00"""
 
-
-
-
 questions = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "a", q10: "b"}
-score = 0
 for soal in questions:
     print(soal)
     ans = input("masukkan jawaban: ")
+    end_time = time.time() - start_time
+    if end_time >= waktu:
+        break
     if ans ==questions[soal]:
         score += 10
     else:
         score += 0
 
-return score
+print(score)
 
