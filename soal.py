@@ -4,7 +4,7 @@ score = 0
 print("""untuk menjawab ketik a, b, c, d, atau e lalu tekan enter
 anda hanya diberi waktu 10 menit untuk menjawab soal""")
 time.sleep(10)
-waktu = 5
+durasi = 5
 start_time = time.time()
 q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki laki dan 3 perempuan sedang duduk berjajar bersama, 
 peluang 3 anak perempuan duduk berdampingan adalah...
@@ -84,12 +84,11 @@ for soal in questions:
     print(soal)
     ans = input("masukkan jawaban: ")
     end_time = time.time() - start_time
-    if end_time >= waktu:
+    if end_time >= durasi:
         break
     if ans ==questions[soal]:
         score += 10
     else:
         score += 0
 
-print(score)
 
