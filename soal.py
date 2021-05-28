@@ -6,6 +6,7 @@ anda hanya diberi waktu 10 menit untuk menjawab soal""")
 time.sleep(10)
 durasi = 5
 start_time = time.time()
+print("\n")
 q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki laki dan 3 perempuan sedang duduk berjajar bersama, 
 peluang 3 anak perempuan duduk berdampingan adalah...
 a. 1/60 

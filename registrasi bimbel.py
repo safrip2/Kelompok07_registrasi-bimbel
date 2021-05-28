@@ -15,7 +15,6 @@ def header():
         '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
 header()
-print()
-print()
-import soal
+print("\n")
+from soal import score
 print(f"nilai anda adalah: {score}")
