@@ -16,10 +16,10 @@ def header():
 
 header()
 
-print("Silahkan pilih pilihan di bawah ini")
-pilihanawal = input("1. Informasi Umum \n 2. Daftar Langsung \n Pilihan Anda (tuliskan nomor saja): ")
+print("Silahkan pilih salah satu menu di bawah ini")
+pilihanawal = input("1. Informasi Umum \n2. Daftar Langsung \nMasukkan pilihan Anda (tuliskan nomor saja): ")
 if pilihanawal == "1":
-    pilihaninfo = input("1. Informasi daftar hari les \n 2. Informasi pembagian kelas berdasarkan nilai tes \n 3. Informasi biaya les \n Pilihan anda (Tuliskan angka saja): ")
+    pilihaninfo = input("1. Informasi daftar hari les \n2. Informasi pembagian kelas berdasarkan nilai tes \n3. Informasi biaya les \nMasukkan pilihan anda (Tuliskan angka saja): ")
     if pilihaninfo == "1":
         print("informasi daftar hari les")
     elif pilihaninfo == "2":
@@ -31,8 +31,11 @@ if pilihanawal == "1":
 elif pilihanawal == "2":
     pilihandaftar = input("Masukkan Nama,Jurusan, dan Asal SMA anda (pisahkan masing - masing data dengan koma): ")
     pilihandaftar_list = pilihandaftar.split(",")
+    print("\n")
+    from soal import score
+    print(f"nilai anda adalah: {score}")
+    if score >= 60:
+        time.sleep(5)
+        print("selamat anda lolos")
 
 
-print("\n")
-from soal import score
-print(f"nilai anda adalah: {score}")
