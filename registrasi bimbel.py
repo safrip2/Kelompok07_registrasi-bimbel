@@ -37,5 +37,27 @@ elif pilihanawal == "2":
     if score >= 60:
         time.sleep(5)
         print("selamat anda lolos")
+        durasibimbel = input("Silakan pilih durasi belajar anda \n1.1 semester \n2.1 tahun \nMasukkan pilihan anda (tulis angka saja):")
+        if durasibimbel == "1":
+            if score >= 90:
+                kelas = "LULUS"
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 80 and score < 90:
+                kelas = "GRADE A"
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 70 and score < 80:
+                kelas = "GRADE B"
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 60 and score < 70:
+                kelas = "GRADE C"
+                print(f"Anda masuk kelas {kelas}")
+            else:
+                pass
+    else:
+        print("maaf anda tidak lolos test")
+        sys.exit()
+
+
+
 
 
