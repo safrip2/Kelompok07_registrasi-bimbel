@@ -81,6 +81,25 @@ elif pilihanawal == "2":
         sys.exit()
 
 
+nama = input("Nama Lengkap : ")
+TTL = input("Tempat, Tanggal Lahir : ")
+Jenis_Kelamin = input("Jenis Kelamin : ")
+Agama = input("Agama : ")
+Alamat = input("Alamat : ")
+Asal_Sekolah = input("Asal Sekolah : ")
+NoHp_Siswa = input("Nomor Hp Siswa : ")
+Email = input("Email : ")
+Nama_Ayah = input("Nama Ayah : "
+Nama_Ibu = input("Nama Ibu : ")
+NoHp_Ortu = input("No Hp Orang Tua : ")
+Pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+
+print(f"{nama,TTL,Jenis_Kelamin,Agama,Alamat,Asal_Sekolah,NoHp_Siswa,Email,Nama_Ayah,Nama_Ibu,NoHp_Ortu,Pekerjaan_Ortu}")
+
+
+
+
+
 
 
 
