@@ -41,21 +41,63 @@ elif pilihanawal == "2":
         if durasibimbel == "1":
             if score >= 90:
                 kelas = "LULUS"
+                harga = 6000000
                 print(f"Anda masuk kelas {kelas}")
             elif score >= 80 and score < 90:
                 kelas = "GRADE A"
+                harga = 7500000
                 print(f"Anda masuk kelas {kelas}")
             elif score >= 70 and score < 80:
                 kelas = "GRADE B"
+                harga = 8000000
                 print(f"Anda masuk kelas {kelas}")
             elif score >= 60 and score < 70:
                 kelas = "GRADE C"
+                harga = 8500000
+                print(f"Anda masuk kelas {kelas}")
+            else:
+                pass
+        elif durasibimbel == "2":
+            if score >= 90:
+                kelas = "LULUS"
+                harga = 11000000
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 80 and score < 90:
+                kelas = "GRADE A"
+                harga = 12500000
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 70 and score < 80:
+                kelas = "GRADE B"
+                harga = 13000000
+                print(f"Anda masuk kelas {kelas}")
+            elif score >= 60 and score < 70:
+                kelas = "GRADE C"
+                harga = 13500000
                 print(f"Anda masuk kelas {kelas}")
             else:
                 pass
     else:
         print("maaf anda tidak lolos test")
         sys.exit()
+
+
+nama = input("Nama Lengkap : ")
+TTL = input("Tempat, Tanggal Lahir : ")
+Jenis_Kelamin = input("Jenis Kelamin : ")
+Agama = input("Agama : ")
+Alamat = input("Alamat : ")
+Asal_Sekolah = input("Asal Sekolah : ")
+NoHp_Siswa = input("Nomor Hp Siswa : ")
+Email = input("Email : ")
+Nama_Ayah = input("Nama Ayah : ")
+Nama_Ibu = input("Nama Ibu : ")
+NoHp_Ortu = input("No Hp Orang Tua : ")
+Pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+
+print(f"{nama,TTL,Jenis_Kelamin,Agama,Alamat,Asal_Sekolah,NoHp_Siswa,Email,Nama_Ayah,Nama_Ibu,NoHp_Ortu,Pekerjaan_Ortu}")
+
+
+
 
 
 
