@@ -204,6 +204,7 @@ elif diskon.upper()== "TIDAK":
 else:
     pass
 print("Harga yang harus anda bayarkan: ", hargaakhir)
+print("tambahan")
 cardqr()
 
 
