@@ -108,13 +108,19 @@ while pilihanawal !="0" :
     if pilihanawal == "1":
         pilihaninfo = input("1. Informasi daftar hari les \n2. Informasi pembagian kelas berdasarkan nilai tes \n3. Informasi biaya les \nMasukkan pilihan anda (Tuliskan angka saja): ")
         if pilihaninfo == "1":
-            print("informasi daftar hari les")
+            print("==Informasi Daftar Hari les==")
+            print("PROSUS SEVEN memiliki 2 pilihan hari les:")
+            print("1. Senin, Rabu, Jumat")
+            print("2. Selasa, Kamis, Sabtu")
             time.sleep(5)
         elif pilihaninfo == "2":
-            print("informasi pembagian kelas berdasarkan nilai tes")
+            print("==Informasi Pembagian Kelas Berdasarkan Nilai Tes==")
+            print("Pembagian kelas berdasarkan hasil tes:")
+            print("1. Apabila nilai )
             time.sleep(5)
         elif pilihaninfo == "3":
-            print("informasi biaya les")
+            print("==Informasi Biaya les==")
+            print("Biaya bimbingan")
             time.sleep(5)
         else:
             pass
