@@ -3,7 +3,6 @@ import datetime
 import qrcode
 import time
 import sys
-import threading
 score = 0
 def header():
     d_date = datetime.datetime.now()
@@ -13,7 +12,6 @@ def header():
     print(reg_format_date)
     print(
         '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-
 
 def iduser():
     from string import digits, ascii_letters
@@ -116,7 +114,7 @@ while pilihanawal !="0" :
         elif pilihaninfo == "2":
             print("==Informasi Pembagian Kelas Berdasarkan Nilai Tes==")
             print("Pembagian kelas berdasarkan hasil tes:")
-            print("1. Apabila nilai )
+            print("1. Apabila nilai")
             time.sleep(5)
         elif pilihaninfo == "3":
             print("==Informasi Biaya les==")
@@ -210,7 +208,6 @@ elif diskon.upper()== "TIDAK":
 else:
     pass
 print("Harga yang harus anda bayarkan: ", hargaakhir)
-print("tambahan")
 cardqr()
 
 
