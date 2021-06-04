@@ -146,7 +146,7 @@ while pilihanawal !="0" :
         if score >= 60:
             time.sleep(5)
             print("selamat anda lolos")
-            durasibimbel = input("Silakan pilih durasi belajar anda \n1 semester \n1 tahun \nMasukkan pilihan anda (tulis angka saja):")
+            durasibimbel = input("Silakan pilih durasi belajar anda \n1. 1 semester \n2. 1 tahun \nMasukkan pilihan anda (tulis angka saja):")
             if durasibimbel == "1":
                 if score >= 90:
                     kelas = "LULUS"
@@ -154,24 +154,28 @@ while pilihanawal !="0" :
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 7500000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 else:
                     pass
             elif durasibimbel == "2":
@@ -181,24 +185,28 @@ while pilihanawal !="0" :
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
                     print(f"Anda masuk kelas {kelas}")
                     time.sleep(3)
                     datadiri_idcard()
+                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
                 else:
                     pass
         else:
