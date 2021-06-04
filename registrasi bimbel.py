@@ -14,26 +14,6 @@ def header():
     print(
         '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
-def datadiri_idcard():
-    global umur
-    global ttl
-    global jenis_kelamin
-    global noHp_Siswa
-    global alamat
-    ttl = input("Tempat, Tanggal Lahir : ")
-    umur = input('masukkan umur anda: ')
-    jenis_kelamin = input("Jenis Kelamin : ")
-    agama = input("Agama : ")
-    alamat = input("Alamat : ")
-    noHp_Siswa = input("Nomor Hp Siswa : ")
-    email = input("Email : ")
-    nama_Ayah = input("Nama Ayah : ")
-    nama_Ibu = input("Nama Ibu : ")
-    noHp_Ortu = input("No Hp Orang Tua : ")
-    pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
-    idcard = cardqr()
-    print(idcard)
-    return ttl,umur,jenis_kelamin,agama,alamat,noHp_Ortu,noHp_Siswa,email,nama_Ibu,nama_Ayah,pekerjaan_Ortu
 
 def iduser():
     from string import digits, ascii_letters
@@ -116,8 +96,8 @@ def cardqr():
     im = Image.open(str(idno) + '.bmp')  # 25x25
     til.paste(im, (550, 255))
     til.save(name + '.png')
-    return cardqr()
-
+    print(('\n\n\nYour ID Card Successfully created in a PNG file ' + name + '.png'))
+    eval(input('\n\nPress any key to Close program...'))
 
 
 print("Silahkan pilih salah satu menu di bawah ini")
@@ -152,30 +132,23 @@ while pilihanawal !="0" :
                     kelas = "LULUS"
                     harga = 6000000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
+
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 7500000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 else:
                     pass
             elif durasibimbel == "2":
@@ -183,41 +156,42 @@ while pilihanawal !="0" :
                     kelas = "LULUS"
                     harga = 11000000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
                     print(f"Anda masuk kelas {kelas}")
-                    time.sleep(3)
-                    datadiri_idcard()
-                    pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+                    break
                 else:
                     pass
         else:
             print("maaf anda tidak lolos test")
             sys.exit()
 
-
-
-
-
-
+time.sleep(3)
+ttl = input("Tempat, Tanggal Lahir : ")
+umur = input('masukkan umur anda: ')
+jenis_kelamin = input("Jenis Kelamin : ")
+agama = input("Agama : ")
+alamat = input("Alamat : ")
+noHp_Siswa = input("Nomor Hp Siswa : ")
+email = input("Email : ")
+nama_Ayah = input("Nama Ayah : ")
+nama_Ibu = input("Nama Ibu : ")
+noHp_Ortu = input("No Hp Orang Tua : ")
+pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+cardqr()
+pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
 
 
 
