@@ -14,6 +14,111 @@ def header():
     print(
         '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
+def datadiri_idcard():
+    global umur
+    global ttl
+    global jenis_kelamin
+    global noHp_Siswa
+    global alamat
+    ttl = input("Tempat, Tanggal Lahir : ")
+    umur = input('masukkan umur anda: ')
+    jenis_kelamin = input("Jenis Kelamin : ")
+    agama = input("Agama : ")
+    alamat = input("Alamat : ")
+    noHp_Siswa = input("Nomor Hp Siswa : ")
+    email = input("Email : ")
+    nama_Ayah = input("Nama Ayah : ")
+    nama_Ibu = input("Nama Ibu : ")
+    noHp_Ortu = input("No Hp Orang Tua : ")
+    pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+    idcard = cardqr()
+    print(idcard)
+    return ttl,umur,jenis_kelamin,agama,alamat,noHp_Ortu,noHp_Siswa,email,nama_Ibu,nama_Ayah,pekerjaan_Ortu
+
+def iduser():
+    from string import digits, ascii_letters
+    length = 6
+    num1 = random.randint(1, 99)
+    num2 = random.randint(4, 9)
+    symbols = ascii_letters + digits
+    secure_random = random.SystemRandom()
+    iduser = (f"{num1}{num2}{''.join(secure_random.choice(symbols) for i in range(length))}")
+    return iduser
+
+def cardqr():
+    from PIL import Image, ImageDraw, ImageFont
+
+    image = Image.new('RGB', (1000, 600), (66, 245, 179))
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('arial.ttf', size=45)
+
+    (x, y) = (50, 50)
+
+    message = "PROSUS SEVEN"
+    company = message
+    color = 'rgb(0, 0, 0)'
+    font = ImageFont.truetype('arial.ttf', size=80)
+    draw.text((x, y), message, fill=color, font=font)
+
+    # adding an unique id number. You can manually take it from user
+    (x, y) = (550, 70)
+    idno = iduser()
+    message = str('ID ' + str(idno))
+    color = 'rgb(0, 0, 0)'  # black color
+    font = ImageFont.truetype('arial.ttf', size=60)
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 200)
+    message = pilihandaftar[1]
+    name = message
+    color = 'rgb(0, 0, 0)'  # black color
+    font = ImageFont.truetype('arial.ttf', size=45)
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 300)
+    message = jenis_kelamin
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+    (x, y) = (245, 300)
+    message = umur
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 400)
+    message = ttl
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 500)
+    message = kelas
+    color = 'rgb(255, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 600)
+    message = noHp_Siswa
+    temp = message
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+
+    (x, y) = (45, 700)
+    message = alamat
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+
+    # save the edited image
+
+    image.save(str(name) + '.png')
+
+    img = qrcode.make(str(company) + str(idno))  # this info. is added in QR code, also add other things
+    img.save(str(idno) + '.bmp')
+
+    til = Image.open(name + '.png')
+    im = Image.open(str(idno) + '.bmp')  # 25x25
+    til.paste(im, (550, 255))
+    til.save(name + '.png')
+    return cardqr()
+
+
 
 print("Silahkan pilih salah satu menu di bawah ini")
 pilihanawal = str()
@@ -35,30 +140,38 @@ while pilihanawal !="0" :
             pass
     elif pilihanawal == "2":
         pilihandaftar = list(input("Masukkan Nama,Jurusan, dan Asal SMA anda (pisahkan masing - masing data dengan koma): ").split(","))
-        print("\n")
+        header()
         from soal import score
         print(f"nilai anda adalah: {score}")
         if score >= 60:
             time.sleep(5)
             print("selamat anda lolos")
-            durasibimbel = input("Silakan pilih durasi belajar anda \n1.1 semester \n2.1 tahun \nMasukkan pilihan anda (tulis angka saja):")
+            durasibimbel = input("Silakan pilih durasi belajar anda \n1 semester \n1 tahun \nMasukkan pilihan anda (tulis angka saja):")
             if durasibimbel == "1":
                 if score >= 90:
                     kelas = "LULUS"
                     harga = 6000000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 7500000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 else:
                     pass
             elif durasibimbel == "2":
@@ -66,18 +179,26 @@ while pilihanawal !="0" :
                     kelas = "LULUS"
                     harga = 11000000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
                     print(f"Anda masuk kelas {kelas}")
+                    time.sleep(3)
+                    datadiri_idcard()
                 else:
                     pass
         else:
@@ -85,18 +206,7 @@ while pilihanawal !="0" :
             sys.exit()
 
 
-nama = input("Nama Lengkap : ")
-TTL = input("Tempat, Tanggal Lahir : ")
-Jenis_Kelamin = input("Jenis Kelamin : ")
-Agama = input("Agama : ")
-Alamat = input("Alamat : ")
-Asal_Sekolah = input("Asal Sekolah : ")
-NoHp_Siswa = input("Nomor Hp Siswa : ")
-Email = input("Email : ")
-Nama_Ayah = input("Nama Ayah : ")
-Nama_Ibu = input("Nama Ibu : ")
-NoHp_Ortu = input("No Hp Orang Tua : ")
-Pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+
 
 
 
