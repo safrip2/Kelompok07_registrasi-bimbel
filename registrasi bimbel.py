@@ -114,11 +114,25 @@ while pilihanawal !="0" :
         elif pilihaninfo == "2":
             print("==Informasi Pembagian Kelas Berdasarkan Nilai Tes==")
             print("Pembagian kelas berdasarkan hasil tes:")
-            print("1. Apabila nilai")
+            print("1. Apabila nilai >=90 maka anda masuk ke kelas LULUS")
+            print("2. Apabila nilai >=80 dan <90 maka anda masuk ke kelas GRADE A")
+            print("3. Apabila nilai >=70 dan <80 maka anda masuk ke kelas GRADE B")
+            print("4. Apabila nilai >=60 dan <70 maka anda masuk ke kelas GRADE C")
+            print("NOTES : Apabila nilai anda tidak memenuhi syarat maka anda tidak bisa mengikuti kelas")
             time.sleep(5)
         elif pilihaninfo == "3":
             print("==Informasi Biaya les==")
-            print("Biaya bimbingan")
+            print("Biaya bimbingan belajar dikelompokkan menjadi 2 kategori yaitu PERSEMESTER dan PERTAHUN ")
+            print("Apabila memilih kategori PERSEMESTER maka biaya : ")
+            print(" 1. kelas LULUS = Rp.6.000.000 ")
+            print(" 2. kelas GRADE A = Rp.7.500.000 ")
+            print(" 3. kelas GRADE B = Rp.8.000.000 ")
+            print(" 4. kelas GRADE C = Rp.8.500.000 ")
+            print("Apabila memilih kategori PERTAHUN maka biaya : ")
+            print(" 1. kelas LULUS = Rp.11.000.000 ")
+            print(" 2. kelas GRADE A = Rp.12.500.000 ")
+            print(" 3. kelas GRADE B = Rp.13.000.000 ")
+            print(" 4. kelas GRADE C = Rp.13.500.000 ")
             time.sleep(5)
         else:
             pass
