@@ -190,14 +190,20 @@ nama_Ayah = input("Nama Ayah : ")
 nama_Ibu = input("Nama Ibu : ")
 noHp_Ortu = input("No Hp Orang Tua : ")
 pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
-cardqr()
 pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
-
-
-
-
-
-
-
+print("Biaya yang harus anda bayarkan: ", harga)
+diskon = input("Apakah anda memiliki kode disekon? (ya/tidak): ")
+if diskon.upper()== "YA":
+    kodediskon = input("Masukkan kode diskon : ")
+    if kodediskon.upper() == "BERSAMASEVENMASUKPTN":
+        hargaakhir = harga * 90 / 100
+    else:
+        pass
+elif diskon.upper()== "TIDAK":
+    hargaakhir = harga
+else:
+    pass
+print("Harga yang harus anda bayarkan: ", hargaakhir)
+cardqr()
 
 
