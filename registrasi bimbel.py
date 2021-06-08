@@ -275,3 +275,4 @@ while pilihanawal !="0" :
             print("maaf anda tidak lolos test")
             sys.exit()
 
+
