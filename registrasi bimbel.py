@@ -3,7 +3,9 @@ import datetime
 import qrcode
 import time
 import sys
+from datetime import date
 score = 0
+hargaakhir = 0
 def header():
     d_date = datetime.datetime.now()
     reg_format_date = d_date.strftime("  %d-%m-%Y\t\t\t\t\tPROSUS SEVEN\t\t\t\t\t  %I:%M:%S %p")
@@ -107,6 +109,8 @@ def semuadata():
     global email
     global nama_Ayah
     global nama_Ibu
+    global harga
+    global hargaakhir
     time.sleep(3)
     ttl = input("Tempat, Tanggal Lahir : ")
     umur = input('masukkan umur anda: ')
@@ -135,6 +139,25 @@ def semuadata():
         pass
     print("Harga yang harus anda bayarkan: ", hargaakhir)
     cardqr()
+def opsibayar():
+    print("")
+    print("+" * 30)
+    bimbel = "BIMBEL PROSUS SEVEN"
+    judul = bimbel.center(30)
+    print(judul)
+    print("+" * 30)
+    print("")
+    bukti = "BUKTI PEMBAYARAN"
+    buktibayar = bukti.center(30)
+    print(buktibayar)
+    garis = "-" * 20
+    garisbawah = garis.center(30)
+    print(garisbawah)
+    nama = print("Nama                   : %s" % datanama)
+    idsiswa = print("ID Siswa               : %s" % iduser())
+    tanggal = date.today()
+    print("Tanggal Pembayaran     :", tanggal)
+    nominal = print("Nominal Pembayaran     : %d" % hargaakhir)
 
 print("Silahkan pilih salah satu menu di bawah ini")
 pilihanawal = str()
@@ -191,6 +214,7 @@ while pilihanawal !="0" :
                     harga = 6000000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
 
                 elif score >= 80 and score < 90:
@@ -198,18 +222,21 @@ while pilihanawal !="0" :
                     harga = 7500000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 else:
                     pass
@@ -219,31 +246,32 @@ while pilihanawal !="0" :
                     harga = 11000000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
                     print(f"Anda masuk kelas {kelas}")
                     semuadata()
+                    opsibayar()
                     break
                 else:
                     pass
         else:
             print("maaf anda tidak lolos test")
             sys.exit()
-
-
-
 
