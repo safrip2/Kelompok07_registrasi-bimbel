@@ -47,7 +47,7 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
 
     (x, y) = (45, 200)
-    message = pilihandaftar[1]
+    message = datanama
     name = message
     color = 'rgb(0, 0, 0)'  # black color
     font = ImageFont.truetype('arial.ttf', size=45)
@@ -97,6 +97,44 @@ def cardqr():
     print(('\n\n\nYour ID Card Successfully created in a PNG file ' + name + '.png'))
     eval(input('\n\nPress any key to Close program...'))
 
+def semuadata():
+    global ttl
+    global umur
+    global jenis_kelamin
+    global agama
+    global noHp_Siswa
+    global alamat
+    global email
+    global nama_Ayah
+    global nama_Ibu
+    time.sleep(3)
+    ttl = input("Tempat, Tanggal Lahir : ")
+    umur = input('masukkan umur anda: ')
+    jenis_kelamin = input("Jenis Kelamin : ")
+    agama = input("Agama : ")
+    alamat = input("Alamat : ")
+    noHp_Siswa = input("Nomor Hp Siswa : ")
+    email = input("Email : ")
+    nama_Ayah = input("Nama Ayah : ")
+    nama_Ibu = input("Nama Ibu : ")
+    noHp_Ortu = input("No Hp Orang Tua : ")
+    pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+    pilianharibelajar = input(
+        "Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+    print("Biaya yang harus anda bayarkan: ", harga)
+    diskon = input("Apakah anda memiliki kode disekon? (ya/tidak): ")
+    if diskon.upper() == "YA":
+        kodediskon = input("Masukkan kode diskon : ")
+        if kodediskon.upper() == "BERSAMASEVENMASUKPTN":
+            hargaakhir = harga * 90 / 100
+        else:
+            pass
+    elif diskon.upper() == "TIDAK":
+        hargaakhir = harga
+    else:
+        pass
+    print("Harga yang harus anda bayarkan: ", hargaakhir)
+    cardqr()
 
 print("Silahkan pilih salah satu menu di bawah ini")
 pilihanawal = str()
@@ -137,7 +175,9 @@ while pilihanawal !="0" :
         else:
             pass
     elif pilihanawal == "2":
-        pilihandaftar = list(input("Masukkan Nama,Jurusan, dan Asal SMA anda (pisahkan masing - masing data dengan koma): ").split(","))
+        datanama = input("Masukkan nama Anda : ")
+        datajurusan = input("Masukkan jurusan Anda : ")
+        datasma = input("Masukkan asal SMA Anda : ")
         header()
         from soal import score
         print(f"nilai anda adalah: {score}")
@@ -150,22 +190,26 @@ while pilihanawal !="0" :
                     kelas = "LULUS"
                     harga = 6000000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
 
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 7500000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 else:
                     pass
@@ -174,21 +218,25 @@ while pilihanawal !="0" :
                     kelas = "LULUS"
                     harga = 11000000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
                     print(f"Anda masuk kelas {kelas}")
+                    semuadata()
                     break
                 else:
                     pass
@@ -196,32 +244,6 @@ while pilihanawal !="0" :
             print("maaf anda tidak lolos test")
             sys.exit()
 
-time.sleep(3)
-ttl = input("Tempat, Tanggal Lahir : ")
-umur = input('masukkan umur anda: ')
-jenis_kelamin = input("Jenis Kelamin : ")
-agama = input("Agama : ")
-alamat = input("Alamat : ")
-noHp_Siswa = input("Nomor Hp Siswa : ")
-email = input("Email : ")
-nama_Ayah = input("Nama Ayah : ")
-nama_Ibu = input("Nama Ibu : ")
-noHp_Ortu = input("No Hp Orang Tua : ")
-pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
-pilianharibelajar = input("Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
-print("Biaya yang harus anda bayarkan: ", harga)
-diskon = input("Apakah anda memiliki kode disekon? (ya/tidak): ")
-if diskon.upper()== "YA":
-    kodediskon = input("Masukkan kode diskon : ")
-    if kodediskon.upper() == "BERSAMASEVENMASUKPTN":
-        hargaakhir = harga * 90 / 100
-    else:
-        pass
-elif diskon.upper()== "TIDAK":
-    hargaakhir = harga
-else:
-    pass
-print("Harga yang harus anda bayarkan: ", hargaakhir)
-cardqr()
+
 
 
