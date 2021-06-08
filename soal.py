@@ -4,7 +4,7 @@ score = 0
 print("""untuk menjawab ketik a, b, c, d, atau e lalu tekan enter
 anda hanya diberi waktu 10 menit untuk menjawab soal""")
 time.sleep(10)
-durasi = 10
+durasi = 600
 start_time = time.time()
 print("\n")
 q1 = """1. Terdapat enam orang anak yang terdiri dari 3 laki laki dan 3 perempuan sedang duduk berjajar bersama, 
