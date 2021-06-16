@@ -120,24 +120,24 @@ def semuadata():
     nama_Ibu = input("Nama Ibu : ")
     noHp_Ortu = input("No Hp Orang Tua : ")
     pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
-    with open("database.csv", "a") as newfile:
+    with open("database.csv", "w") as newfile:
         fieldnames = ['nama', 'asal sma', 'jenis kelamin', 'phone', 'email', 'alamat']
         csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
         csv_writer.writeheader()
 
-        with open('database.csv', 'a') as f:
-            w = csv.writer(f, quoting=csv.QUOTE_ALL)
-            i = 0
-            while i < 2:
-                nama = datanama
-                asalsma = datasma
-                jeniskelamin = input("Jenis Kelamin : ")
-                phone = input("Nomor Hp Siswa : ")
-                email = input("Email : ")
-                alamat = input("Alamat : ")
-                w.writerow([nama, asalsma, jeniskelamin, phone, email, alamat])
-                i += 1
-                break
+    with open('database.csv', 'a') as f:
+        w = csv.writer(f, quoting=csv.QUOTE_ALL)
+        i = 0
+        while i < 2:
+            nama = datanama
+            asalsma = datasma
+            jeniskelamin = input("Jenis Kelamin : ")
+            phone = input("Nomor Hp Siswa : ")
+            email = input("Email : ")
+            alamat = input("Alamat : ")
+            w.writerow([nama, asalsma, jeniskelamin, phone, email, alamat])
+            i += 1
+            break
     time.sleep(3)
     pilianharibelajar = input(
         "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
