@@ -3,6 +3,7 @@ import datetime
 import qrcode
 import time
 import sys
+import csv
 from datetime import date
 score = 0
 hargaakhir = 0
@@ -37,7 +38,7 @@ def cardqr():
     message = "PROSUS SEVEN"
     company = message
     color = 'rgb(0, 0, 0)'
-    font = ImageFont.truetype('arial.ttf', size=80)
+    font = ImageFont.truetype('arial.ttf', size=60)
     draw.text((x, y), message, fill=color, font=font)
 
     # adding an unique id number. You can manually take it from user
@@ -45,7 +46,7 @@ def cardqr():
     idno = iduser()
     message = str('ID ' + str(idno))
     color = 'rgb(0, 0, 0)'  # black color
-    font = ImageFont.truetype('arial.ttf', size=60)
+    font = ImageFont.truetype('arial.ttf', size=40)
     draw.text((x, y), message, fill=color, font=font)
 
     (x, y) = (45, 200)
@@ -56,7 +57,7 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
 
     (x, y) = (45, 300)
-    message = jenis_kelamin
+    message = jeniskelamin
     color = 'rgb(0, 0, 0)'  # black color
     draw.text((x, y), message, fill=color, font=font)
     (x, y) = (245, 300)
@@ -75,7 +76,7 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
 
     (x, y) = (45, 600)
-    message = noHp_Siswa
+    message = phone
     temp = message
     color = 'rgb(0, 0, 0)'  # black color
     draw.text((x, y), message, fill=color, font=font)
@@ -102,9 +103,9 @@ def cardqr():
 def semuadata():
     global ttl
     global umur
-    global jenis_kelamin
+    global jeniskelamin
     global agama
-    global noHp_Siswa
+    global phone
     global alamat
     global email
     global nama_Ayah
@@ -114,15 +115,29 @@ def semuadata():
     time.sleep(3)
     ttl = input("Tempat, Tanggal Lahir : ")
     umur = input('masukkan umur anda: ')
-    jenis_kelamin = input("Jenis Kelamin : ")
     agama = input("Agama : ")
-    alamat = input("Alamat : ")
-    noHp_Siswa = input("Nomor Hp Siswa : ")
-    email = input("Email : ")
     nama_Ayah = input("Nama Ayah : ")
     nama_Ibu = input("Nama Ibu : ")
     noHp_Ortu = input("No Hp Orang Tua : ")
     pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+    with open("database.csv", "a") as newfile:
+        fieldnames = ['nama', 'asal sma', 'jenis kelamin', 'phone', 'email', 'alamat']
+        csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
+        csv_writer.writeheader()
+
+        with open('database.csv', 'a') as f:
+            w = csv.writer(f, quoting=csv.QUOTE_ALL)
+            i = 0
+            while i < 2:
+                nama = datanama
+                asalsma = datasma
+                jeniskelamin = input("Jenis Kelamin : ")
+                phone = input("Nomor Hp Siswa : ")
+                email = input("Email : ")
+                alamat = input("Alamat : ")
+                w.writerow([nama, asalsma, jeniskelamin, phone, email, alamat])
+                i += 1
+                break
     time.sleep(3)
     pilianharibelajar = input(
         "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
