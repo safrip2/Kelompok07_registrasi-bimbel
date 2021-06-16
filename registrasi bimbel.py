@@ -123,12 +123,17 @@ def semuadata():
     nama_Ibu = input("Nama Ibu : ")
     noHp_Ortu = input("No Hp Orang Tua : ")
     pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+    time.sleep(3)
     pilianharibelajar = input(
-        "Silahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+        "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+    print()
+    print(80*'=')
     print("Biaya yang harus anda bayarkan: ", harga)
-    diskon = input("Apakah anda memiliki kode disekon? (ya/tidak): ")
+    print(80*'=')
+    print()
+    diskon = input("Apakah Anda Memiliki Kode Diskon? (ya/tidak): ")
     if diskon.upper() == "YA":
-        kodediskon = input("Masukkan kode diskon : ")
+        kodediskon = input("Masukkan Kode Diskon : ")
         if kodediskon.upper() == "BERSAMASEVENMASUKPTN":
             hargaakhir = harga * 90 / 100
         else:
@@ -137,7 +142,7 @@ def semuadata():
         hargaakhir = harga
     else:
         pass
-    print("Harga yang harus anda bayarkan: ", hargaakhir)
+    print("Harga Yang Harus Anda Bayarkan: ", hargaakhir)
     cardqr()
 def opsibayar():
     print("")
@@ -159,22 +164,48 @@ def opsibayar():
     print("Tanggal Pembayaran     :", tanggal)
     nominal = print("Nominal Pembayaran     : %d" % hargaakhir)
 
-print("Silahkan pilih salah satu menu di bawah ini")
 pilihanawal = str()
 while pilihanawal !="0" :
     header()
+    print()
+    print('\t\t\t\t\t\t\t==SELAMAT DATANG==\t\t\t\t\t\t\t\t ')
+    print()
+    print('\t\tBimbel PROSUS SEVEN Siap Membantu Kamu Menuju Masa Depanmu!\t\t')
+    print('\t\t\t\t\tPROSUS SEVEN dengan 7 Keunggulan:\t\t\t\t\t')
+    print('\t\t\t1.Smart dan Profesional Tentor Lulusan PTN\t\t\t\t')
+    print('\t\t\t2.Pertemuan 3x Seminggu, 2 Pelajaran @90 Menit\t\t\t\t')
+    print('\t\t\t3.Modul dan Soal-Soal Persis Seperti UTBK Tahun-Tahun Lalu\t\t\t')
+    print('\t\t\t4.Free konsultasi PR dan Tugas\t\t\t\t')
+    print('\t\t\t5.TryOut dan Simulasi UTBK 2 Minggu Sekali\t\t\t')
+    print('\t\t\t6.Ruang Kelas Nyaman dan Dibatasi Max 15 Murid/kelas\t\t\t')
+    print('\t\t\t7.Konsultasi Penjurusan oleh Wali Kelas\t\t\t\t')
+    print()
+    print('\t\t\t\t\t\t'"BERSAMA 'SEVEN' MASUK 'PTN'!"'\t\t\t\t\t\t\t')
+    print()
+    print(80*'+')
+    print()
+    print("Silahkan pilih salah satu menu di bawah ini")
     pilihanawal = input("1. Informasi Umum \n2. Daftar Langsung \nMasukkan pilihan Anda (tuliskan nomor saja): ")
+    print()
+    print(80*'+')
+    print()
     if pilihanawal == "1":
+        print('\t\t\t==========I N F O R M A S I   U M U M==========\t\t\t\t')
         pilihaninfo = input("1. Informasi daftar hari les \n2. Informasi pembagian kelas berdasarkan nilai tes \n3. Informasi biaya les \nMasukkan pilihan anda (Tuliskan angka saja): ")
         if pilihaninfo == "1":
-            print("==Informasi Daftar Hari les==")
-            print("PROSUS SEVEN memiliki 2 pilihan hari les:")
+            print()
+            print(80*'+')
+            print()
+            print('\t\t\t==========INFORMASI DAFTAR HARI LES==========\t\t\t')
+            print('PROSUS SEVEN memiliki 2 pilihan hari les:')
             print("1. Senin, Rabu, Jumat")
             print("2. Selasa, Kamis, Sabtu")
             time.sleep(5)
         elif pilihaninfo == "2":
-            print("==Informasi Pembagian Kelas Berdasarkan Nilai Tes==")
-            print("Pembagian kelas berdasarkan hasil tes:")
+            print(80*'+')
+            print()
+            print('\t==========INFORMASI PEMBAGIAN KELAS BERDASARKAN HASIL TES==========\t\t')
+            print('Pembagian kelas berdasarkan hasil tes:')
             print("1. Apabila nilai >=90 maka anda masuk ke kelas LULUS")
             print("2. Apabila nilai >=80 dan <90 maka anda masuk ke kelas GRADE A")
             print("3. Apabila nilai >=70 dan <80 maka anda masuk ke kelas GRADE B")
@@ -182,14 +213,16 @@ while pilihanawal !="0" :
             print("NOTES : Apabila nilai anda tidak memenuhi syarat maka anda tidak bisa mengikuti kelas")
             time.sleep(5)
         elif pilihaninfo == "3":
-            print("==Informasi Biaya les==")
-            print("Biaya bimbingan belajar dikelompokkan menjadi 2 kategori yaitu PERSEMESTER dan PERTAHUN ")
-            print("Apabila memilih kategori PERSEMESTER maka biaya : ")
+            print(80*'+')
+            print()
+            print('\t\t\t\t==========INFORMASI BIAYA LES==========\t\t\t\t')
+            print('Biaya bimbingan belajar dikelompokkan menjadi 2 kategori yaitu PERSEMESTER dan PERTAHUN')
+            print('Apabila memilih kategori PERSEMESTER maka biaya :')
             print(" 1. kelas LULUS = Rp.6.000.000 ")
             print(" 2. kelas GRADE A = Rp.7.500.000 ")
             print(" 3. kelas GRADE B = Rp.8.000.000 ")
             print(" 4. kelas GRADE C = Rp.8.500.000 ")
-            print("Apabila memilih kategori PERTAHUN maka biaya : ")
+            print('Apabila memilih kategori PERTAHUN maka biaya :')
             print(" 1. kelas LULUS = Rp.11.000.000 ")
             print(" 2. kelas GRADE A = Rp.12.500.000 ")
             print(" 3. kelas GRADE B = Rp.13.000.000 ")
@@ -198,21 +231,44 @@ while pilihanawal !="0" :
         else:
             pass
     elif pilihanawal == "2":
-        datanama = input("Masukkan nama Anda : ")
-        datajurusan = input("Masukkan jurusan Anda : ")
-        datasma = input("Masukkan asal SMA Anda : ")
+        print('\t\t\t ==========D A F T A R   L A N G S U N G==========\t\t\t')
+        datanama = input("Masukkan Nama Anda : ")
+        datajurusan = input("Masukkan Jurusan Anda : ")
+        datasma = input("Masukkan Asal SMA Anda : ")
+        print()
+        print(80*'+')
+        print()
+        print('\t\t\t\t==========TEST PEMBAGIAN KELAS==========\t\t\t\t')
+        print("Test Pembagian Kelas dalam Bimbel Prosus Seven adalah untuk menentukan kelas yang akan ")
+        print("siswa dapatkan guna memaksimalkan kegiatan pembelajaran dalam Bimbel Prosus Seven.")
+        print("Test hanya dapat berlangsung 1x dengan durasi 10 menit. Diharapkan siswa mengerjakannya")
+        print("dengan sungguh-sungguh. ")
+        print('\t\t\t\t\t\t\t-SELAMAT MENGERJAKAN-\t\t\t\t\t\t')
+        print()
         header()
         from soal import score
-        print(f"nilai anda adalah: {score}")
+        print()
+        print(80*'=')
+        print(f"NILAI ANDA ADALAH: {score}")
+        print(80*'=')
+        print()
         if score >= 60:
-            time.sleep(5)
-            print("selamat anda lolos")
+            print(80*'+')
+            print('\t\t\t\t\t\t-Selamat Anda LOLOS!!-\t\t\t\t\t')
+            print(80*'+')
+            print()
             durasibimbel = input("Silakan pilih durasi belajar anda \n1. 1 semester \n2. 1 tahun \nMasukkan pilihan anda (tulis angka saja):")
             if durasibimbel == "1":
                 if score >= 90:
                     kelas = "LULUS"
                     harga = 6000000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80*'=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80*'=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
@@ -220,21 +276,39 @@ while pilihanawal !="0" :
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 7500000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 8000000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 8500000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
@@ -244,35 +318,61 @@ while pilihanawal !="0" :
                 if score >= 90:
                     kelas = "LULUS"
                     harga = 11000000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
                     harga = 12500000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
                     harga = 13000000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
                     harga = 13500000
-                    print(f"Anda masuk kelas {kelas}")
+                    print()
+                    print(80 * '=')
+                    print(f"Anda Masuk Kelas {kelas}")
+                    print(80 * '=')
+                    print()
+                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+                    print()
                     semuadata()
                     opsibayar()
                     break
                 else:
                     pass
         else:
-            print("maaf anda tidak lolos test")
+            print(80 * '=')
+            print('\t\t\t\t\tMaaf Anda Tidak Lolos Test\t\t\t\t')
+            print(80 * '=')
             sys.exit()
 
 
