@@ -4,6 +4,7 @@ import qrcode
 import time
 import sys
 import csv
+import os
 from datetime import date
 score = 0
 hargaakhir = 0
@@ -42,8 +43,8 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
 
     # adding an unique id number. You can manually take it from user
-    (x, y) = (550, 70)
-    idno = iduser()
+    (x, y) = (600, 70)
+    idno = nomorid
     message = str('ID ' + str(idno))
     color = 'rgb(0, 0, 0)'  # black color
     font = ImageFont.truetype('arial.ttf', size=40)
@@ -60,7 +61,7 @@ def cardqr():
     message = jeniskelamin
     color = 'rgb(0, 0, 0)'  # black color
     draw.text((x, y), message, fill=color, font=font)
-    (x, y) = (245, 300)
+    (x, y) = (260, 300)
     message = umur
     color = 'rgb(0, 0, 0)'  # black color
     draw.text((x, y), message, fill=color, font=font)
@@ -87,9 +88,7 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
 
     # save the edited image
-
     image.save(str(name) + '.png')
-
     img = qrcode.make(str(company) + str(idno))  # this info. is added in QR code, also add other things
     img.save(str(idno) + '.bmp')
 
@@ -113,31 +112,35 @@ def semuadata():
     global harga
     global hargaakhir
     time.sleep(3)
-    ttl = input("Tempat, Tanggal Lahir : ")
-    umur = input('masukkan umur anda: ')
-    agama = input("Agama : ")
-    nama_Ayah = input("Nama Ayah : ")
-    nama_Ibu = input("Nama Ibu : ")
-    noHp_Ortu = input("No Hp Orang Tua : ")
-    pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
-    with open("database.csv", "w") as newfile:
-        fieldnames = ['nama', 'asal sma', 'jenis kelamin', 'phone', 'email', 'alamat']
-        csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
-        csv_writer.writeheader()
-
+    if not os.path.exists('database.csv'):
+        with open("database.csv", "w") as newfile:
+            fieldnames = ['nama', 'jurusan','asal sma', 'kelasbimbel',
+                          'phone', 'email', 'jenis kelamin', 'alamat',
+                          'ttl', 'umur', 'agama', 'nama ayah', 'nama ibu', 'no hp ortu', 'ID Siswa']
+            csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
+            csv_writer.writeheader()
+            newfile.close()
     with open('database.csv', 'a') as f:
         w = csv.writer(f, quoting=csv.QUOTE_ALL)
-        i = 0
-        while i < 2:
-            nama = datanama
-            asalsma = datasma
-            jeniskelamin = input("Jenis Kelamin : ")
-            phone = input("Nomor Hp Siswa : ")
-            email = input("Email : ")
-            alamat = input("Alamat : ")
-            w.writerow([nama, asalsma, jeniskelamin, phone, email, alamat])
-            i += 1
-            break
+        nama = datanama
+        jurusan = datajurusan
+        asalsma = datasma
+        kelasbimbel = kelas
+        phone = input("Nomor Hp Siswa : ")
+        email = input("Email : ")
+        jeniskelamin = input("Jenis Kelamin: ")
+        alamat = input("Alamat: ")
+        ttl = input("Tempat, Tanggal Lahir : ")
+        umur = input('masukkan umur anda: ')
+        agama = input("Agama : ")
+        nama_Ayah = input("Nama Ayah : ")
+        nama_Ibu = input("Nama Ibu : ")
+        noHp_Ortu = input("No Hp Orang Tua : ")
+        pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+        w.writerow([nama, jurusan, asalsma, kelasbimbel, phone, email,
+                    jeniskelamin, alamat, ttl, umur, agama, nama_Ayah,
+                    nama_Ibu, noHp_Ortu, nomorid])
+        f.close()
     time.sleep(3)
     pilianharibelajar = input(
         "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
@@ -173,14 +176,14 @@ def opsibayar():
     garis = "-" * 20
     garisbawah = garis.center(30)
     print(garisbawah)
-    nama = print("Nama                   : %s" % datanama)
-    idsiswa = print("ID Siswa               : %s" % iduser())
-    tanggal = date.today()
-    print("Tanggal Pembayaran     :", tanggal)
-    nominal = print("Nominal Pembayaran     : %d" % hargaakhir)
+    print("Nama                   : %s" % datanama)
+    print("ID Siswa               : %s" % nomorid)
+    print("Tanggal Pembayaran     :", date.today())
+    print("Nominal Pembayaran     : Rp.%d" % hargaakhir)
 
 pilihanawal = str()
 while pilihanawal !="0" :
+    global kelas
     header()
     print()
     print('\t\t\t\t\t\t\t==SELAMAT DATANG==\t\t\t\t\t\t\t\t ')
@@ -250,6 +253,7 @@ while pilihanawal !="0" :
         datanama = input("Masukkan Nama Anda : ")
         datajurusan = input("Masukkan Jurusan Anda : ")
         datasma = input("Masukkan Asal SMA Anda : ")
+        nomorid = iduser()
         print()
         print(80*'+')
         print()
