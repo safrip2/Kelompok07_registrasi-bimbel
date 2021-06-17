@@ -8,6 +8,8 @@ import os
 from datetime import date
 score = 0
 hargaakhir = 0
+
+#fungsi header
 def header():
     d_date = datetime.datetime.now()
     reg_format_date = d_date.strftime("  %d-%m-%Y\t\t\t\t\tPROSUS SEVEN\t\t\t\t\t  %I:%M:%S %p")
@@ -17,6 +19,7 @@ def header():
     print(
         '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
 
+#membuat nomor identitas siswa
 def iduser():
     from string import digits, ascii_letters
     length = 6
@@ -27,6 +30,7 @@ def iduser():
     iduser = (f"{num1}{num2}{''.join(secure_random.choice(symbols) for i in range(length))}")
     return iduser
 
+#membuat kartu anggota dan qrcode
 def cardqr():
     from PIL import Image, ImageDraw, ImageFont
 
@@ -35,14 +39,13 @@ def cardqr():
     font = ImageFont.truetype('arial.ttf', size=45)
 
     (x, y) = (50, 50)
-
     message = "PROSUS SEVEN"
     company = message
     color = 'rgb(0, 0, 0)'
-    font = ImageFont.truetype('arial.ttf', size=60)
-    draw.text((x, y), message, fill=color, font=font)
+    font = ImageFont.truetype('arial.ttf', size=60) #color = hitam fill, ukuran 60
+    draw.text((x, y), message, fill=color, font=font) #draw pada canvas x dan y dengan message = prosus seven
 
-    # adding an unique id number. You can manually take it from user
+    # adding an unique id number dari input user nanti
     (x, y) = (600, 70)
     idno = nomorid
     message = str('ID ' + str(idno))
@@ -73,7 +76,7 @@ def cardqr():
 
     (x, y) = (45, 500)
     message = kelas
-    color = 'rgb(255, 0, 0)'  # black color
+    color = 'rgb(255, 0, 0)'  # red
     draw.text((x, y), message, fill=color, font=font)
 
     (x, y) = (45, 600)
@@ -99,6 +102,7 @@ def cardqr():
     print(('\n\n\nYour ID Card Successfully created in a PNG file ' + name + '.png'))
     eval(input('\n\nPress any key to Close program...'))
 
+#masukkan data diri siswa yang kemudian untuk fungsi cardqr dan di store ke database
 def semuadata():
     global ttl
     global umur
@@ -111,16 +115,18 @@ def semuadata():
     global nama_Ibu
     global harga
     global hargaakhir
+    global haribelajar
+    global pilihanharibelajar
     time.sleep(3)
     if not os.path.exists('database.csv'):
-        with open("database.csv", "w") as newfile:
+        with open("database.csv", "w") as newfile: #jika file database.csv tidak ada, program akan melakukan write file
             fieldnames = ['nama', 'jurusan','asal sma', 'kelasbimbel',
                           'phone', 'email', 'jenis kelamin', 'alamat',
                           'ttl', 'umur', 'agama', 'nama ayah', 'nama ibu', 'no hp ortu', 'ID Siswa']
             csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
             csv_writer.writeheader()
             newfile.close()
-    with open('database.csv', 'a') as f:
+    with open('database.csv', 'a') as f: #jika ada, program tinggal menabahkan data baru
         w = csv.writer(f, quoting=csv.QUOTE_ALL)
         nama = datanama
         jurusan = datajurusan
@@ -144,6 +150,12 @@ def semuadata():
     time.sleep(3)
     pilianharibelajar = input(
         "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
+    if pilianharibelajar == 1:
+        haribelajar = "senin, rabu, jumat"
+        return haribelajar
+    elif pilianharibelajar == 2:
+        haribelajar = "selasa, kamis, sabtu"
+        return haribelajar
     print()
     print(80*'=')
     print("Biaya yang harus anda bayarkan: ", harga)
@@ -155,14 +167,16 @@ def semuadata():
         if kodediskon.upper() == "BERSAMASEVENMASUKPTN":
             hargaakhir = harga * 90 / 100
         else:
-            pass
+            print("kode yang anda masukkan salah!")
+            hargaakhir = harga
     elif diskon.upper() == "TIDAK":
         hargaakhir = harga
     else:
-        pass
+        hargaakhir = harga
+
     print("Harga Yang Harus Anda Bayarkan: ", hargaakhir)
     cardqr()
-def opsibayar():
+def struk():
     print("")
     print("+" * 30)
     bimbel = "BIMBEL PROSUS SEVEN"
@@ -202,7 +216,7 @@ while pilihanawal !="0" :
     print()
     print(80*'+')
     print()
-    print("Silahkan pilih salah satu menu di bawah ini")
+    print("Silahkan pilih salah satu menu di bawah ini, masukkan 0 untuk keluar dari program")
     pilihanawal = input("1. Informasi Umum \n2. Daftar Langsung \nMasukkan pilihan Anda (tuliskan nomor saja): ")
     print()
     print(80*'+')
@@ -289,7 +303,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
 
                 elif score >= 80 and score < 90:
@@ -303,7 +317,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
@@ -316,7 +330,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
@@ -329,7 +343,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 else:
                     pass
@@ -345,7 +359,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 elif score >= 80 and score < 90:
                     kelas = "GRADE A"
@@ -358,7 +372,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 elif score >= 70 and score < 80:
                     kelas = "GRADE B"
@@ -371,7 +385,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 elif score >= 60 and score < 70:
                     kelas = "GRADE C"
@@ -384,7 +398,7 @@ while pilihanawal !="0" :
                     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
                     print()
                     semuadata()
-                    opsibayar()
+                    struk()
                     break
                 else:
                     pass
