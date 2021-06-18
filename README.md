@@ -1,6 +1,6 @@
 # Registrasi Bimbel Prosus Seven
 ## Tugas Besar Praktikum Program Komputer 2021 Kelas A Kelompok 07
-#### Program ini dibuat untuk memenuhi tugas pratikum programa komputer secara berkelompok.
+#### Program ini dibuat untuk mempermudah siswa mendaftar di lembaga bimbingan belajar dan mempercepat proses pembuatan kartu anggota. Selain itu, program ini untuk memenuhi tugas pratikum programa komputer secara berkelompok.
 
 ## Repository
 
@@ -9,6 +9,7 @@
 >* Berkas <a href="https://github.com/safrip2/Kelompok07_registrasi-bimbel/blob/main/README.md"> README.md</a> Merupakan penjelasan singkat isi dari repository
 >* Berkas <a href="https://github.com/safrip2/Kelompok07_registrasi-bimbel/blob/main/registrasi%20bimbel%20prosus%20seven-main.pdf"> regristrasi bimbel prosus seven-main.pdf</a> Merupakan lampiran berupa diagram alir yang menjelaskan cara kerja program
 >* Berkas <a href="https://github.com/safrip2/Kelompok07_registrasi-bimbel/blob/main/7_ADIT_TUBES%20TAHAP%201.pdf"> 7_ADIT_TUBES TAHAP 1.pdf</a> Merupakan laporan tahap 1 tugas besar programma komputer
+>* Berkas <a href="https://github.com/safrip2/Kelompok07_registrasi-bimbel/blob/main/database.csv"> database.csv</a> Merupakan tempat menyimpan data pengguna
 
 
 ## System Requirement

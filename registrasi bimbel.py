@@ -6,20 +6,32 @@ import sys
 import csv
 import os
 from datetime import date
+
+# pre defined
 score = 0
 hargaakhir = 0
+ttl = str
+umur = str
+jeniskelamin = str
+agama = str
+phone = str
+alamat = str
+email = str
+nama_ayah = str
+nama_ibu = str
+haribelajar = str
 
-#fungsi header
+
+# fungsi header
 def header():
     d_date = datetime.datetime.now()
     reg_format_date = d_date.strftime("  %d-%m-%Y\t\t\t\t\tPROSUS SEVEN\t\t\t\t\t  %I:%M:%S %p")
-    print(
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    print('+' * 79)
     print(reg_format_date)
-    print(
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    print('+' * 79)
 
-#membuat nomor identitas siswa
+
+# membuat nomor identitas siswa
 def iduser():
     from string import digits, ascii_letters
     length = 6
@@ -27,83 +39,12 @@ def iduser():
     num2 = random.randint(4, 9)
     symbols = ascii_letters + digits
     secure_random = random.SystemRandom()
-    iduser = (f"{num1}{num2}{''.join(secure_random.choice(symbols) for i in range(length))}")
-    return iduser
+    idsiswa = f"{num1}{num2}{''.join(secure_random.choice(symbols) for i in range(length))}"
+    return idsiswa
 
-#membuat kartu anggota dan qrcode
-def cardqr():
-    from PIL import Image, ImageDraw, ImageFont
 
-    image = Image.new('RGB', (1000, 600), (66, 245, 179))
-    draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype('arial.ttf', size=45)
-
-    (x, y) = (50, 50)
-    message = "PROSUS SEVEN"
-    company = message
-    color = 'rgb(0, 0, 0)'
-    font = ImageFont.truetype('arial.ttf', size=60) #color = hitam fill, ukuran 60
-    draw.text((x, y), message, fill=color, font=font) #draw pada canvas x dan y dengan message = prosus seven
-
-    # adding an unique id number dari input user nanti
-    (x, y) = (600, 70)
-    idno = nomorid
-    message = str('ID ' + str(idno))
-    color = 'rgb(0, 0, 0)'  # black color
-    font = ImageFont.truetype('arial.ttf', size=40)
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 200)
-    message = datanama
-    name = message
-    color = 'rgb(0, 0, 0)'  # black color
-    font = ImageFont.truetype('arial.ttf', size=45)
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 300)
-    message = jeniskelamin
-    color = 'rgb(0, 0, 0)'  # black color
-    draw.text((x, y), message, fill=color, font=font)
-    (x, y) = (260, 300)
-    message = umur
-    color = 'rgb(0, 0, 0)'  # black color
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 400)
-    message = ttl
-    color = 'rgb(0, 0, 0)'  # black color
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 500)
-    message = kelas
-    color = 'rgb(255, 0, 0)'  # red
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 600)
-    message = phone
-    temp = message
-    color = 'rgb(0, 0, 0)'  # black color
-    draw.text((x, y), message, fill=color, font=font)
-
-    (x, y) = (45, 700)
-    message = alamat
-    color = 'rgb(0, 0, 0)'  # black color
-    draw.text((x, y), message, fill=color, font=font)
-
-    # save the edited image
-    image.save(str(name) + '.png')
-    img = qrcode.make(str(company) + str(idno))  # this info. is added in QR code, also add other things
-    img.save(str(idno) + '.bmp')
-
-    til = Image.open(name + '.png')
-    im = Image.open(str(idno) + '.bmp')  # 25x25
-    til.paste(im, (550, 255))
-    til.save(name + '.png')
-    print(('\n\n\nYour ID Card Successfully created in a PNG file ' + name + '.png'))
-    eval(input('\n\nPress any key to Close program...'))
-
-#masukkan data diri siswa yang kemudian untuk fungsi cardqr dan di store ke database
-def semuadata():
+# masukkan data diri siswa yang kemudian untuk fungsi cardqr dan di store ke database
+def inputdata():
     global ttl
     global umur
     global jeniskelamin
@@ -111,22 +52,23 @@ def semuadata():
     global phone
     global alamat
     global email
-    global nama_Ayah
-    global nama_Ibu
+    global nama_ayah
+    global nama_ibu
     global harga
     global hargaakhir
     global haribelajar
     global pilihanharibelajar
     time.sleep(3)
     if not os.path.exists('database.csv'):
-        with open("database.csv", "w") as newfile: #jika file database.csv tidak ada, program akan melakukan write file
-            fieldnames = ['nama', 'jurusan','asal sma', 'kelasbimbel',
+        # jika file database.csv tidak ada, program akan melakukan write file
+        with open("database.csv", "w") as newfile:
+            fieldnames = ['nama', 'jurusan', 'asal sma', 'kelasbimbel',
                           'phone', 'email', 'jenis kelamin', 'alamat',
                           'ttl', 'umur', 'agama', 'nama ayah', 'nama ibu', 'no hp ortu', 'ID Siswa']
             csv_writer = csv.DictWriter(newfile, fieldnames=fieldnames)
             csv_writer.writeheader()
             newfile.close()
-    with open('database.csv', 'a') as f: #jika ada, program tinggal menabahkan data baru
+    with open('database.csv', 'a') as f:  # jika ada, program tinggal menabahkan data baru
         w = csv.writer(f, quoting=csv.QUOTE_ALL)
         nama = datanama
         jurusan = datajurusan
@@ -139,27 +81,26 @@ def semuadata():
         ttl = input("Tempat, Tanggal Lahir : ")
         umur = input('masukkan umur anda: ')
         agama = input("Agama : ")
-        nama_Ayah = input("Nama Ayah : ")
-        nama_Ibu = input("Nama Ibu : ")
-        noHp_Ortu = input("No Hp Orang Tua : ")
-        pekerjaan_Ortu = input("Pekerjaan Orang Tua : ")
+        nama_ayah = input("Nama Ayah : ")
+        nama_ibu = input("Nama Ibu : ")
+        no_hp_ortu = input("Nomor Hp salah satu Orang Tua : ")
         w.writerow([nama, jurusan, asalsma, kelasbimbel, phone, email,
-                    jeniskelamin, alamat, ttl, umur, agama, nama_Ayah,
-                    nama_Ibu, noHp_Ortu, nomorid])
+                    jeniskelamin, alamat, ttl, umur, agama, nama_ayah,
+                    nama_ibu, no_hp_ortu, nomorid])
         f.close()
     time.sleep(3)
     pilianharibelajar = input(
         "\n\t\t\t==========H A R I  B E L A J A R==========\t\t\t\nSilahkan pilih hari belajar yang anda inginkan \n1. Senin, Rabu, Jumat \n2. Selasa, Kamis, Sabtu \nMasukkan pilihan anda (tulis angka saja): ")
     if pilianharibelajar == 1:
         haribelajar = "senin, rabu, jumat"
-        return haribelajar
+
     elif pilianharibelajar == 2:
         haribelajar = "selasa, kamis, sabtu"
-        return haribelajar
+
     print()
-    print(80*'=')
-    print("Biaya yang harus anda bayarkan: ", harga)
-    print(80*'=')
+    print(80 * '=')
+    print(f"Biaya yang harus anda bayarkan: Rp.{harga}")
+    print(80 * '=')
     print()
     diskon = input("Apakah Anda Memiliki Kode Diskon? (ya/tidak): ")
     if diskon.upper() == "YA":
@@ -173,9 +114,79 @@ def semuadata():
         hargaakhir = harga
     else:
         hargaakhir = harga
-
-    print("Harga Yang Harus Anda Bayarkan: ", hargaakhir)
+    print(f"Harga Yang Harus Anda Bayarkan: Rp.{hargaakhir}")
     cardqr()
+
+
+# membuat kartu anggota dan qrcode
+def cardqr():
+    from PIL import Image, ImageDraw, ImageFont
+    image = Image.new('RGB', (1000, 600), (66, 245, 179))
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.truetype('arial.ttf', size=45)
+    (x, y) = (50, 50)
+    message = "PROSUS SEVEN"
+    company = message
+    color = 'rgb(0, 0, 0)'  # color 0 0 0 = hitam
+    font = ImageFont.truetype('arial.ttf', size=60)  # ukuran 60
+    draw.text((x, y), message, fill=color, font=font)  # draw pada canvas x dan y dengan message = prosus seven FILL
+    # adding an unique id number dari input user nanti
+    (x, y) = (600, 70)
+    # add id card siswa dari fungsi iduser
+    idno = nomorid
+    message = str('ID ' + str(idno))
+    color = 'rgb(0, 0, 0)'  # black color
+    font = ImageFont.truetype('arial.ttf', size=40)
+    draw.text((x, y), message, fill=color, font=font)
+    (x, y) = (45, 200)
+    # input nama di awal diproses
+    message = datanama
+    name = message
+    color = 'rgb(0, 0, 0)'  # black color
+    font = ImageFont.truetype('arial.ttf', size=45)
+    draw.text((x, y), message, fill=color, font=font)
+    # input jenis kelain di proses
+    (x, y) = (45, 300)
+    message = jeniskelamin
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+    (x, y) = (260, 300)
+    message = umur
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+    # input tempat tanggal lahir diproses
+    (x, y) = (45, 400)
+    message = ttl
+    color = 'rgb(0, 0, 0)'  # black color
+    draw.text((x, y), message, fill=color, font=font)
+    # input kelas diproses
+    (x, y) = (45, 500)
+    message = kelas
+    color = 'rgb(255, 0, 0)'  # red
+    draw.text((x, y), message, fill=color, font=font)
+    # save the edited image
+    image.save(str(name) + '.png')
+    img = qrcode.make(str(company) + str(idno))  # this info. is added in QR code, also add other things
+    img.save(str(idno) + '.bmp')
+    # final proses
+    til = Image.open(name + '.png')
+    im = Image.open(str(idno) + '.bmp')  # 25x25
+    til.paste(im, (550, 255))
+    til.save(name + '.png')
+    print(('\n\nKartu Anggota anda berhasil dibuat dengan nama ' + name + '.png'))
+
+
+# memnentukan kelas berdasarkan nilai
+def penentuankelas():
+    print(80 * '=')
+    text = f"Anda Masuk Kelas {kelas}"
+    print(text.center(75))
+    print(80 * '=')
+    print()
+    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
+
+
+# membuat struk
 def struk():
     print("")
     print("+" * 30)
@@ -193,10 +204,12 @@ def struk():
     print("Nama                   : %s" % datanama)
     print("ID Siswa               : %s" % nomorid)
     print("Tanggal Pembayaran     :", date.today())
-    print("Nominal Pembayaran     : Rp.%d" % hargaakhir)
+    print("Nominal Pembayaran     : Rp. %d" % hargaakhir)
 
+
+# program utama
 pilihanawal = str()
-while pilihanawal !="0" :
+while pilihanawal != "0":
     global kelas
     header()
     print()
@@ -214,19 +227,20 @@ while pilihanawal !="0" :
     print()
     print('\t\t\t\t\t\t'"BERSAMA 'SEVEN' MASUK 'PTN'!"'\t\t\t\t\t\t\t')
     print()
-    print(80*'+')
+    print(80 * '+')
     print()
     print("Silahkan pilih salah satu menu di bawah ini, masukkan 0 untuk keluar dari program")
     pilihanawal = input("1. Informasi Umum \n2. Daftar Langsung \nMasukkan pilihan Anda (tuliskan nomor saja): ")
     print()
-    print(80*'+')
+    print(80 * '+')
     print()
     if pilihanawal == "1":
         print('\t\t\t==========I N F O R M A S I   U M U M==========\t\t\t\t')
-        pilihaninfo = input("1. Informasi daftar hari les \n2. Informasi pembagian kelas berdasarkan nilai tes \n3. Informasi biaya les \nMasukkan pilihan anda (Tuliskan angka saja): ")
+        pilihaninfo = input(
+            "1. Informasi daftar hari les \n2. Informasi pembagian kelas berdasarkan nilai tes \n3. Informasi biaya les \nMasukkan pilihan anda (Tuliskan angka saja): ")
         if pilihaninfo == "1":
             print()
-            print(80*'+')
+            print(80 * '+')
             print()
             print('\t\t\t==========INFORMASI DAFTAR HARI LES==========\t\t\t')
             print('PROSUS SEVEN memiliki 2 pilihan hari les:')
@@ -234,7 +248,7 @@ while pilihanawal !="0" :
             print("2. Selasa, Kamis, Sabtu")
             time.sleep(5)
         elif pilihaninfo == "2":
-            print(80*'+')
+            print(80 * '+')
             print()
             print('\t==========INFORMASI PEMBAGIAN KELAS BERDASARKAN HASIL TES==========\t\t')
             print('Pembagian kelas berdasarkan hasil tes:')
@@ -245,7 +259,7 @@ while pilihanawal !="0" :
             print("NOTES : Apabila nilai anda tidak memenuhi syarat maka anda tidak bisa mengikuti kelas")
             time.sleep(5)
         elif pilihaninfo == "3":
-            print(80*'+')
+            print(80 * '+')
             print()
             print('\t\t\t\t==========INFORMASI BIAYA LES==========\t\t\t\t')
             print('Biaya bimbingan belajar dikelompokkan menjadi 2 kategori yaitu PERSEMESTER dan PERTAHUN')
@@ -269,7 +283,7 @@ while pilihanawal !="0" :
         datasma = input("Masukkan Asal SMA Anda : ")
         nomorid = iduser()
         print()
-        print(80*'+')
+        print(80 * '+')
         print()
         print('\t\t\t\t==========TEST PEMBAGIAN KELAS==========\t\t\t\t')
         print("Test Pembagian Kelas dalam Bimbel Prosus Seven adalah untuk menentukan kelas yang akan ")
@@ -279,133 +293,92 @@ while pilihanawal !="0" :
         print('\t\t\t\t\t\t\t-SELAMAT MENGERJAKAN-\t\t\t\t\t\t')
         print()
         header()
-        from soal import score
+        from soal import score  # Mengimport File Soal
+
         print()
-        print(80*'=')
+        print(80 * '=')
         print(f"NILAI ANDA ADALAH: {score}")
-        print(80*'=')
+        print(80 * '=')
         print()
         if score >= 60:
-            print(80*'+')
+            print(80 * '+')
             print('\t\t\t\t\t\t-Selamat Anda LOLOS!!-\t\t\t\t\t')
-            print(80*'+')
+            print(80 * '+')
             print()
-            durasibimbel = input("Silakan pilih durasi belajar anda \n1. 1 semester \n2. 1 tahun \nMasukkan pilihan anda (tulis angka saja):")
-            if durasibimbel == "1":
-                if score >= 90:
-                    kelas = "LULUS"
-                    harga = 6000000
-                    print()
-                    print(80*'=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80*'=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
+            maksimalinput = 3
+            jumlahinput = 0
+            while jumlahinput < maksimalinput:
+                durasibimbel = input(
+                    "Silakan pilih durasi belajar anda \n1. 1 semester \n2. 1 tahun \nMasukkan pilihan anda (tulis angka saja): ")
+                jumlahinput += 1
+                if durasibimbel != "1" and durasibimbel != "2":
+                    print("mohon pilih salah satu, anda hanya boleh melakukan 3 kesalahan input!")
+                elif durasibimbel == "1":
+                    if score >= 90:
+                        kelas = "LULUS"
+                        harga = 6000000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 80 <= score < 90:
+                        kelas = "GRADE A"
+                        harga = 7500000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 70 <= score < 80:
+                        kelas = "GRADE B"
+                        harga = 8000000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 60 <= score < 70:
+                        kelas = "GRADE C"
+                        harga = 8500000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    else:
+                        pass
+                elif durasibimbel == "2":
+                    if score >= 90:
+                        kelas = "LULUS"
+                        harga = 11000000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 80 <= score < 90:
+                        kelas = "GRADE A"
+                        harga = 12500000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 70 <= score < 80:
+                        kelas = "GRADE B"
+                        harga = 13000000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    elif 60 <= score < 70:
+                        kelas = "GRADE C"
+                        harga = 13500000
+                        penentuankelas()
+                        inputdata()
+                        struk()
+                        break
+                    else:
+                        pass
+            sys.exit()
 
-                elif score >= 80 and score < 90:
-                    kelas = "GRADE A"
-                    harga = 7500000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                elif score >= 70 and score < 80:
-                    kelas = "GRADE B"
-                    harga = 8000000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                elif score >= 60 and score < 70:
-                    kelas = "GRADE C"
-                    harga = 8500000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                else:
-                    pass
-            elif durasibimbel == "2":
-                if score >= 90:
-                    kelas = "LULUS"
-                    harga = 11000000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                elif score >= 80 and score < 90:
-                    kelas = "GRADE A"
-                    harga = 12500000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                elif score >= 70 and score < 80:
-                    kelas = "GRADE B"
-                    harga = 13000000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                elif score >= 60 and score < 70:
-                    kelas = "GRADE C"
-                    harga = 13500000
-                    print()
-                    print(80 * '=')
-                    print(f"Anda Masuk Kelas {kelas}")
-                    print(80 * '=')
-                    print()
-                    print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
-                    print()
-                    semuadata()
-                    struk()
-                    break
-                else:
-                    pass
         else:
             print(80 * '=')
             print('\t\t\t\t\tMaaf Anda Tidak Lolos Test\t\t\t\t')
             print(80 * '=')
             sys.exit()
-
-

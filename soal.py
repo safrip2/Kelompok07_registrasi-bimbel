@@ -1,4 +1,3 @@
-global score
 import time
 score = 0
 print("""untuk menjawab ketik a, b, c, d, atau e lalu tekan enter
@@ -80,16 +79,14 @@ c. Rp90.000,00 dan Rp70.000,00
 d. Rp100.000,00 dan Rp80.000,00
 e. Rp100.000,00 dan Rp90.000,00"""
 
-questions = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "a", q10: "b"}
-for soal in questions:
+answer = {q1: "c", q2: "c", q3: "a", q4: "e", q5: "d", q6: "a", q7: "e", q8: "c", q9: "a", q10: "b"}
+for soal in answer:
     print(soal)
     ans = input("masukkan jawaban: ")
     end_time = time.time() - start_time
     if end_time >= durasi:
         break
-    if ans ==questions[soal]:
+    if ans == answer[soal]:
         score += 10
     else:
         score += 0
-
-
