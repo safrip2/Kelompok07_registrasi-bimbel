@@ -6,6 +6,10 @@ import sys
 import csv
 import os
 from datetime import date
+import smtplib
+# untuk email dan password memang disembunyikan di environment system, maka kalian perlu men setting dulu melalui control panel
+EMAIL_ADDRESS = os.environ.get('DB_USER')
+EMAIL_PASSWORD = os.environ.get('DB_PASS')
 
 # pre defined
 score = 0
@@ -51,7 +55,6 @@ def inputdata():
     global agama
     global phone
     global alamat
-    global email
     global nama_ayah
     global nama_ibu
     global harga
@@ -75,7 +78,6 @@ def inputdata():
         asalsma = datasma
         kelasbimbel = kelas
         phone = input("Nomor Hp Siswa : ")
-        email = input("Email : ")
         jeniskelamin = input("Jenis Kelamin: ")
         alamat = input("Alamat: ")
         ttl = input("Tempat, Tanggal Lahir : ")
@@ -121,7 +123,7 @@ def inputdata():
 # membuat kartu anggota dan qrcode
 def cardqr():
     from PIL import Image, ImageDraw, ImageFont
-    image = Image.new('RGB', (1000, 600), (66, 245, 179))
+    image = Image.new('RGB', (1000, 600), (66, 245, 179))  #1000, 6000 = pixel, 66... = warna canvas
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype('arial.ttf', size=45)
     (x, y) = (50, 50)
@@ -166,13 +168,14 @@ def cardqr():
     draw.text((x, y), message, fill=color, font=font)
     # save the edited image
     image.save(str(name) + '.png')
-    img = qrcode.make(str(company) + str(idno))  # this info. is added in QR code, also add other things
+    img = qrcode.make(str(company) + str(idno) + str(name))  # this info. is added in QR code, also add other things
     img.save(str(idno) + '.bmp')
     # final proses
     til = Image.open(name + '.png')
     im = Image.open(str(idno) + '.bmp')  # 25x25
     til.paste(im, (550, 255))
     til.save(name + '.png')
+    removebmp()
     print(('\n\nKartu Anggota anda berhasil dibuat dengan nama ' + name + '.png'))
 
 
@@ -206,6 +209,13 @@ def struk():
     print("Tanggal Pembayaran     :", date.today())
     print("Nominal Pembayaran     : Rp. %d" % hargaakhir)
 
+#hapus file qr.bmp
+def removebmp():
+    import os
+    if os.path.exists(f"{nomorid}.bmp"):
+        os.remove(f"{nomorid}.bmp")
+    else:
+        pass
 
 # program utama
 pilihanawal = str()
@@ -281,6 +291,7 @@ while pilihanawal != "0":
         datanama = input("Masukkan Nama Anda : ")
         datajurusan = input("Masukkan Jurusan Anda : ")
         datasma = input("Masukkan Asal SMA Anda : ")
+        email = input("Email : ")
         nomorid = iduser()
         print()
         print(80 * '+')
@@ -333,7 +344,6 @@ while pilihanawal != "0":
                         harga = 8000000
                         penentuankelas()
                         inputdata()
-                        struk()
                         break
                     elif 60 <= score < 70:
                         kelas = "GRADE C"
@@ -381,4 +391,15 @@ while pilihanawal != "0":
             print(80 * '=')
             print('\t\t\t\t\tMaaf Anda Tidak Lolos Test\t\t\t\t')
             print(80 * '=')
+            EMAIL_ADDRESS = os.environ.get('DB_USER')
+            EMAIL_PASSWORD = os.environ.get('DB_PASS')
+            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+                subject = f"Hai, {datanama}"
+                body = "Tidak perlu sedih jika tidak lulus tes, stay tune email ini untuk mendapatkan promo untuk semester depan"
+                msg = f"Subject: {subject}\n\n{body}"
+                smtp.sendmail(EMAIL_ADDRESS, email, msg)
             sys.exit()
