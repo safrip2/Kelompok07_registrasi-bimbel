@@ -5,7 +5,6 @@ import time
 import sys
 import csv
 import os
-from datetime import date
 import smtplib
 # untuk email dan password memang disembunyikan di environment system, maka kalian perlu men setting dulu melalui control panel
 EMAIL_ADDRESS = os.environ.get('DB_USER')
@@ -188,6 +187,14 @@ def penentuankelas():
     print()
     print('\t\t\t==========B I O D A T A   D I R I==========\t\t\t')
 
+def akun():
+    print(80 * '=')
+    text2 = "selamat bergabung"
+    print(text2.center(75))
+    print(f"""untuk saat ini akun anda adalah:
+username: {nomorid}
+password: {nomorid + datanama}
+segera rubah password anda di dashboard""")
 
 # membuat struk
 def struk():
@@ -206,12 +213,12 @@ def struk():
     print(garisbawah)
     print("Nama                   : %s" % datanama)
     print("ID Siswa               : %s" % nomorid)
-    print("Tanggal Pembayaran     :", date.today())
+    print("Tanggal Pembayaran     :", datetime.date.today())
     print("Nominal Pembayaran     : Rp. %d" % hargaakhir)
+    akun()
 
 #hapus file qr.bmp
 def removebmp():
-    import os
     if os.path.exists(f"{nomorid}.bmp"):
         os.remove(f"{nomorid}.bmp")
     else:
@@ -391,8 +398,6 @@ while pilihanawal != "0":
             print(80 * '=')
             print('\t\t\t\t\tMaaf Anda Tidak Lolos Test\t\t\t\t')
             print(80 * '=')
-            EMAIL_ADDRESS = os.environ.get('DB_USER')
-            EMAIL_PASSWORD = os.environ.get('DB_PASS')
             with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
                 smtp.ehlo()
                 smtp.starttls()
